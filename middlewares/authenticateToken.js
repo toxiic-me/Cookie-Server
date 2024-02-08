@@ -30,8 +30,6 @@ function authenticateToken(req, res, next) {
         // Move to the next middleware in the chain
         next();
     } catch (error) {
-        // Log any errors that occur during token verification
-        console.error('Token Verification Error:', error);
 
         // Return a Forbidden response if token verification fails
         return res.status(403).json({ message: 'Forbidden' });

@@ -17,7 +17,7 @@ const login = async (req, res) => {
             if (isPasswordValid) {
                 // If password is valid, generate a token and send a success response
                 res.status(200).json({
-                    message: "Login successful.",
+                    message: "Login successfull",
                     token: await userExist.generateToken(),
                     userId: userExist._id.toString()
                 })
@@ -29,7 +29,7 @@ const login = async (req, res) => {
 
     } catch (error) {
         // Handle internal server error
-        res.status(500).json("Internal server error");
+        res.status(500).json({ error: "Internal server error" });
     }
 }
 

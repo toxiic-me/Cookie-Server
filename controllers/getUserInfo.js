@@ -1,18 +1,18 @@
 const Users = require('../models/Users.js')
 
 const getUserInfo = async (req, res) => {
-    const { email } = req.body;
     try {
         await Users.findOne({ _id: req.user.userId })
-            .then(({ name, email, phone, userImage }) => {
+            .then(({ username, email, userImage }) => {
+                console.log(email);
                 res.status(200).json({
-                    name,
+                    username,
                     email,
-                    phone,
                     userImage
                 })
             })
     } catch (error) {
+        console.log(error);
         res.status(500).json({ error: "Server Internal Error" })
     }
 }

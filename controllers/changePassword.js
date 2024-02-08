@@ -17,14 +17,13 @@ const changePassword = async (req, res) => {
         await Users.updateOne({ email }, { password: hash_password })
             .then(({ modifiedCount }) => {
                 if (modifiedCount === 1) {
-                    res.status(200).json({ message: "Password updated successfully." });
+                    res.status(200).json({ message: "Password updated successfully" });
                 } else {
-                    res.status(500).json({ message: "Error updating password." });
+                    res.status(500).json({ error: "Error updating password" });
                 }
             });
     } catch (error) {
         // Handle any errors that occur during the process
-        console.error(error);
         res.status(500).json({ message: "Internal Server Error" });
     }
 };
